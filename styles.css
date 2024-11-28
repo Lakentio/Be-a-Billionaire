@@ -1,0 +1,266 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  header {
+    text-align: center;
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  #setup {
+    margin: 10px 0;
+  }
+  
+  main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .billionaire {
+    padding: 10px;
+    background: white; /* Fundo do botão branco para contraste */
+    color: #4CAF50; /* Cor do texto verde */
+    border: 2px solid #4CAF50; /* Borda verde */
+    border-radius: 15px; /* Cantos arredondados */
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.billionaire:hover {
+    background: #4CAF50; /* Fundo verde quando passar o mouse */
+    color: white; /* Texto branco quando o mouse passar */
+    border-color: #388E3C; /* Borda um pouco mais escura */
+}
+
+.billionaire:focus {
+    border-color: #388E3C;
+    box-shadow: 0 0 5px rgba(72, 155, 72, 0.6);
+}
+
+
+  
+  #item-list {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .item {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+  }
+  
+  .item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  #cart {
+    flex: 1;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  #cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #cart-items li {
+    margin: 5px 0;
+  }
+
+  .button-container {
+    display: flex;
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-top: 10px; /* Espaçamento entre os botões e o texto do item */
+  }
+  
+  .buy-button,
+  .sell-button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .buy-button {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+  }
+  
+  .buy-button:hover {
+    background-color: #388E3C; /* Verde mais escuro */
+  }
+  
+  .sell-button {
+    background-color: #f44336; /* Vermelho */
+    color: white;
+  }
+  
+  .sell-button:hover {
+    background-color: #d32f2f; /* Vermelho mais escuro */
+  }
+
+  /* Animação no carrinho */
+.cart-item.updated {
+    animation: highlight 0.5s ease-in-out;
+  }
+  
+  @keyframes highlight {
+    from {
+      background-color: yellow;
+    }
+    to {
+      background-color: transparent;
+    }
+  }
+  
+  /* Animação no balanço */
+.balance-increase {
+    animation: increase-color 0.5s ease-in-out;
+  }
+  
+  .balance-decrease {
+    animation: decrease-color 0.5s ease-in-out;
+  }
+  
+  @keyframes increase-color {
+    from {
+      color: green;
+    }
+    to {
+      color: black;
+    }
+  }
+  
+  @keyframes decrease-color {
+    from {
+      color: red;
+    }
+    to {
+      color: black;
+    }
+  }
+ 
+  #cart {
+    position: relative; /* Garante o posicionamento relativo */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ajuste conforme o layout desejado */
+  }
+  
+  #cart-items {
+    flex-grow: 1; /* Faz com que a lista de itens ocupe o espaço restante */
+    overflow-y: auto; /* Adiciona rolagem, se necessário */
+  }
+  
+  #cart-actions {
+    margin-top: auto; /* Empurra o botão para o final da box */
+    padding: 10px; /* Adiciona espaço interno */
+    background-color: #f9f9f9; /* Fundo claro para destacar */
+    text-align: center; /* Centraliza o botão */
+    border-top: 1px solid #ddd; /* Linha para separar */
+  }
+  
+  #clear-cart {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%; /* Largura total do contêiner */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #clear-cart:hover {
+    background-color: #d32f2f;
+  }
+
+  /* Animação para os itens desaparecerem */
+/* Animação para os itens desaparecerem */
+@keyframes fadeOutItems {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  #cart-items .item {
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  /* Animação para o botão Clear Cart desaparecer */
+  @keyframes fadeOutButton {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  #clear-cart {
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .fade-out-item {
+    animation: fadeOutItems 0.5s ease-in-out forwards;
+  }
+  
+  .fade-out-button {
+    animation: fadeOutButton 0.5s ease-in-out forwards;
+  }
+  
+  #clear-cart {
+    opacity: 1; /* Garante que o botão esteja visível por padrão */
+  }
+  
+  #settings-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  #settings-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }

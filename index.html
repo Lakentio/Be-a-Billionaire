@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spend Money</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Spend a Billionaire's Money</h1>
+    <div id="setup">
+      <label for="billionaire">Choose a Billionaire:</label>
+      <select class="billionaire" onchange="changeBillionaire()">
+        <option value="bill_gates">Bill Gates ($100 billion)</option>
+        <option value="elon_musk">Elon Musk ($250 billion)</option>
+        <option value="jeff_bezos">Jeff Bezos ($150 billion)</option>
+      </select>
+    </div>
+    <p id="balance" data-balance="100000000000"></p>
+  </header>
+  
+  <main>
+    <section id="item-list"></section>
+
+      <div id="cart">
+      <ul id="cart-items"></ul>
+      <p id="cart-total">Total Spent: $0</p>
+      <div id="cart-actions">
+        <button id="clear-cart">Clear Cart</button>
+      </div>
+    </div>    
+  </main>
+  
+  <footer>
+    <p>Inspired by Neal.fun</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
