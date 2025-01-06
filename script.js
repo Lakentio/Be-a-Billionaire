@@ -54,7 +54,12 @@ function renderItems() {
 function buyItem(name, price) {
   if (balance >= price) {
     balance -= price;
-    cart.push({ name, price });
+    const itemIndex = cart.findIndex(item => item.name === name);
+    if (itemIndex !== -1) {
+      cart[itemIndex].quantity += 1;
+    } else {
+      cart.push({ name, price, quantity: 1 });
+    }
     saveData();
     updateBalance();
     renderCart();
@@ -93,11 +98,11 @@ function renderCart() {
     cart.forEach(item => {
       const listItem = document.createElement("li");
       listItem.innerHTML = `
-        ${item.name} - $${item.price.toLocaleString()}
+        ${item.name} x${item.quantity} - $${(item.price * item.quantity).toLocaleString()}
         <button class="sell-button" onclick="sellItem('${item.name}')">Sell</button>
       `;
       cartItems.appendChild(listItem);
-      total += item.price;
+      total += item.price * item.quantity;
     });
   
     cartTotal.textContent = `Total Spent: $${total.toLocaleString()}`;
@@ -140,9 +145,32 @@ function changeBillionaire() {
   renderCart();
 }
 
+function clearCart() {
+  const select = document.querySelector(".billionaire");
+  const value = select.value;
+
+  switch (value) {
+    case "elon_musk":
+      balance = 250000000000;
+      break;
+    case "jeff_bezos":
+      balance = 150000000000;
+      break;
+    default:
+      balance = 100000000000;
+  }
+
+  cart = [];
+  saveData();
+  updateBalance();
+  renderCart();
+  showFeedback("Cart cleared and balance restored!");
+}
+
 function saveData() {
   localStorage.setItem("balance", balance);
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 init();
+
